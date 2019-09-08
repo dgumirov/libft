@@ -19,7 +19,8 @@ ft_isalpha.c	ft_lstdelone.c	ft_memcpy.c	ft_putnbr.c	ft_strcpy.c	ft_strlen.c	ft_s
 ft_isascii.c	ft_lstiter.c	ft_memdel.c	ft_putnbr_fd.c	ft_strdel.c	ft_strmap.c	ft_strrchr.c \
 ft_isdigit.c	ft_lstmap.c	ft_memmove.c	ft_putstr.c	ft_strdup.c	ft_strmapi.c	ft_strsplit.c \
 
-OBJ = $(SRC:.c=.o)
+OBJ2 = $(SRC:.c=.o)
+OBJ = *.o
 
 NAME = libft.a
 
