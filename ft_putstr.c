@@ -6,7 +6,7 @@
 /*   By: tvincent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/06 21:56:14 by tvincent          #+#    #+#             */
-/*   Updated: 2019/09/07 14:20:56 by tvincent         ###   ########.fr       */
+/*   Updated: 2019/09/10 21:32:01 by tvincent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 
 void	ft_putstr(char const *s)
 {
-	while (*s)
+	if (s)
 	{
-		ft_putchar(*s);
-		s++;
+		while (*s)
+		{
+			ft_putchar(*s);
+			s++;
+		}
 	}
 }

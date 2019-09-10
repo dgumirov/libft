@@ -6,7 +6,7 @@
 /*   By: tvincent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/06 22:00:09 by tvincent          #+#    #+#             */
-/*   Updated: 2019/09/08 15:53:07 by tvincent         ###   ########.fr       */
+/*   Updated: 2019/09/10 21:29:26 by tvincent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ unsigned int		ft_cnt(const char *s, char c)
 	return (cnt);
 }
 
-static int	ft_wlen(const char *s, char c)
+static int			ft_wlen(const char *s, char c)
 {
 	int	len;
 	int	i;
@@ -50,12 +50,12 @@ static int	ft_wlen(const char *s, char c)
 	return (len);
 }
 
-char	**ft_strsplit(char const *s, char c)
+char				**ft_strsplit(char const *s, char c)
 {
 	unsigned int	i;
 	unsigned int	j;
 	unsigned int	k;
-	char	**str;
+	char			**str;
 
 	i = 0;
 	k = 0;

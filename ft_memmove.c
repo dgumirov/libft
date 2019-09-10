@@ -6,7 +6,7 @@
 /*   By: tvincent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/06 18:27:46 by tvincent          #+#    #+#             */
-/*   Updated: 2019/09/07 16:21:22 by tvincent         ###   ########.fr       */
+/*   Updated: 2019/09/10 20:15:07 by tvincent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	unsigned int	i;
 
 	i = 0;
-	if (src < dest)
+	if (src < dest && (dest || src))
 	{
 		while (n)
 		{
@@ -25,7 +25,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 			((unsigned char *)dest)[n] = ((unsigned char *)src)[n];
 		}
 	}
-	else
+	else if (dest || src)
 	{
 		while (i < n)
 		{
