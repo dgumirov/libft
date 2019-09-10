@@ -6,7 +6,7 @@
 /*   By: tvincent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 21:23:56 by tvincent          #+#    #+#             */
-/*   Updated: 2019/09/10 21:24:14 by tvincent         ###   ########.fr       */
+/*   Updated: 2019/09/10 22:49:56 by tvincent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,7 @@ void	ft_lstdel(t_list **alst, void (*del)(void*, size_t))
 		del(list, list->content_size);
 		list = tmp;
 	}
+	if (tmp)
+		free(tmp);
 	*alst = NULL;
 }
