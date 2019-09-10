@@ -14,12 +14,24 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	unsigned int	len;
-	char			*s3;
+	char	*result;
+	size_t	size;
 
-	len = ft_strlen(s1) + ft_strlen(s2);
-	s3 = (char *)(malloc(sizeof(char *) * len + 1));
-	ft_strcpy(s3, s1);
-	ft_strcpy(s3, s2);
-	return (s3);
+	if (s1 && s2)
+		size = (size_t)(ft_strlen((char*)s1) + ft_strlen((char*)s2));
+	else if (s1)
+		size = (size_t)(ft_strlen((char*)s1));
+	else if (s2)
+		size = (size_t)(ft_strlen((char*)s2));
+	else
+		return (NULL);
+	if (!(result = (char *)malloc(sizeof(char *) * size + 1)))
+		return (NULL);
+	if (s1)
+		result = ft_strcpy(result, (char*)s1);
+	else
+		result = ft_strcpy(result, (char*)s2);
+	if (s1 && s2)
+		result = ft_strcat(result, (char*)s2);
+	return (result);
 }

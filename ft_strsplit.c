@@ -33,12 +33,16 @@ unsigned int		ft_cnt(const char *s, char c)
 	return (cnt);
 }
 
-static int		ft_wlen(const char *s, char c)
+static int	ft_wlen(const char *s, char c)
 {
-	int		len;
+	int	len;
+	int	i;
 
 	len = 0;
-	while (*s != c && *s != '\0')
+	i = 0;
+	while (s[i] == c)
+		i++;
+	while (s[i] != c && s[i] != '\0')
 	{
 		len++;
 		s++;
@@ -63,7 +67,7 @@ char	**ft_strsplit(char const *s, char c)
 			return (NULL);
 		j = 0;
 		while (s[k] == c)
-			k += 1;
+			k++;
 		while (s[k] != c && s[k])
 			str[i][j++] = s[k++];
 		str[i][j] = '\0';

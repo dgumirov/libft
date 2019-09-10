@@ -19,24 +19,24 @@ ft_isalpha.c	ft_lstdelone.c	ft_memcpy.c	ft_putnbr.c	ft_strcpy.c	ft_strlen.c	ft_s
 ft_isascii.c	ft_lstiter.c	ft_memdel.c	ft_putnbr_fd.c	ft_strdel.c	ft_strmap.c	ft_strrchr.c \
 ft_isdigit.c	ft_lstmap.c	ft_memmove.c	ft_putstr.c	ft_strdup.c	ft_strmapi.c	ft_strsplit.c \
 
-OBJ2 = $(SRC:.c=.o)
-OBJ = *.o
-
+OBJ = $(SRC:.c=.o)
 NAME = libft.a
 
 HEADER = libft.h
 
 all: $(NAME)
 
-$(NAME): 
-	@gcc -Werror -Wextra -Wall -I $(HEADER) -c $(SRC)
-	@ar rc $(NAME)  $(OBJ)
-	@rm -f $(OBJ)
+$(NAME): $(SRC) 
+	@gcc -Wall -Werror -Wextra -c $(SRC)
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
 
 clean:
-	/bin/rm -f *.o
+	@rm -f $(OBJ)
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: all, clean, fclean, re
