@@ -21,7 +21,7 @@ char	*ft_strdup(const char *s)
 	if (!(dest = (char*)(malloc(sizeof(char) * k + 1))))
 		return (0);
 	dest[k] = '\0';
-	while (k >= 0)
+	while (k > 0)
 	{
 		k--;
 		dest[k] = s[k];

@@ -14,7 +14,7 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*result;
+	char	*str;
 	size_t	size;
 
 	if (s1 && s2)
@@ -25,13 +25,13 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		size = (size_t)(ft_strlen((char*)s2));
 	else
 		return (NULL);
-	if (!(result = (char *)malloc(sizeof(char *) * size + 1)))
+	if (!(str = (char *)malloc(sizeof(str) * size + 1)))
 		return (NULL);
 	if (s1)
-		result = ft_strcpy(result, (char*)s1);
+		str = ft_strcpy(str, (char*)s1);
 	else
-		result = ft_strcpy(result, (char*)s2);
+		str = ft_strcpy(str, (char*)s2);
 	if (s1 && s2)
-		result = ft_strcat(result, (char*)s2);
-	return (result);
+		str = ft_strcat(str, (char*)s2);
+	return (str);
 }

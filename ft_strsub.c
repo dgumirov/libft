@@ -23,7 +23,7 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 	while (i < len)
 	{
 		strsub[i] = s[i + start];
-		i += 1;
+		i++;
 	}
 	strsub[i] = '\0';
 	return (strsub);

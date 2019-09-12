@@ -22,7 +22,10 @@ void	*ft_memalloc(size_t size)
 		if (!(ptr = (unsigned char *)malloc(size)))
 			return (NULL);
 		while (size)
-			ptr[--size] = 0;
+		{
+			ptr[size] = 0;
+			size--;
+		}
 	}
 	return ((void *)ptr);
 }
