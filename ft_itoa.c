@@ -28,6 +28,58 @@ static void		lengths(int n, size_t *len, int *weight)
 	}
 }
 
+char			*ft_str_rev(char *s, size_t len)
+{
+	char	*str;
+	size_t	i;
+	size_t	j;
+	
+	i = len;
+	j = 0;
+	if (s)
+	{
+		if (!(str = (char *)malloc(sizeof(char) * len  + 1)))
+			return (NULL);
+		while (i < len && s && str)
+		{
+			i--;
+			str[j] = s[i];
+			j++;
+		}
+		str[j] = '\0';
+		return (str);
+	}
+	else
+		return (0);
+}
+
+char			*ft_itoa(int n)
+{
+	size_t		len;
+	size_t		cur;
+	char		*str;
+
+	lengths(n, &len, &weight);
+	len = lengths(n);
+	if (!(str = (char *)malloc(sizeof(char) * len + 1)))
+		return (NULL);
+	cur = len - 1;
+	str[cur] = '\0';
+	if (n < 0)
+	{
+		cur--;
+		str[cur] = '-';
+		n = n * -1;
+	}
+	while (cur)
+	{
+		cur--;
+		str[cur] = (n % 10) + 48;
+		n /= 10;
+	}
+	return (ft_str_rev(str, len));
+}
+
 char			*ft_itoa(int n)
 {
 	size_t		len;

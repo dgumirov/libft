@@ -12,24 +12,51 @@
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+static const char	*ft_space(char *nptr)
 {
-	int	res;
-	int	negative;
+	const char	*s;	
 
-	negative = 1;
-	res = 0;
 	while (*nptr && (*nptr == ' ' || *nptr == '\n' || *nptr == '\t' ||
 			*nptr == '\v' || *nptr == '\f' || *nptr == '\r'))
-		++nptr;
-	if (*nptr == '-')
-		negative = -1;
-	if (*nptr == '-' || *nptr == '+')
-		++nptr;
-	while (*nptr && *nptr >= '0' && *nptr <= '9')
+		nptr++;
+	s = nptr;
+	return (s);	
+}
+
+static int		ft_limit(long long n, const char *s, int sign)
+{
+	long long	l_min;
+	long long	l_max;
+
+	l_min = ((n * 10) + (*s - '0')) * sign;
+	if (l_min < -2147483648)
+		return (0);
+	l_max = ((n * 10) + (*s - '0')) * sign;
+	if (l_max > 2147483647)
+		return (-1);
+	return (1);
+}
+
+int			ft_atoi(const char *nptr)
+{
+	int		res;
+	int		sign;
+	const char	*str;
+
+	sign = 1;
+	res = 0;
+	str = ft_space(nptr);
+	if (*str == '-')
+		sign = -1;
+	if (*str == '-' || *str == '+')
+		str++;
+	while (*str && *str >= '0' && *str <= '9')
 	{
-		res = res * 10 + (*nptr - 48);
-		++nptr;
+		limit = ft_limit(res, str, sign)
+		if (limit == 0 || linit == -1)
+			return (limit);
+		res = res * 10 + (*str - 48);
+		str++;
 	}
-	return (res * negative);
+	return (res * sign);
 }
