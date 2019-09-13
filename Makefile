@@ -6,7 +6,7 @@
 #    By: tvincent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/12 11:33:58 by tvincent          #+#    #+#              #
-#    Updated: 2019/09/13 22:18:09 by tvincent         ###   ########.fr        #
+#    Updated: 2019/09/13 22:31:48 by tvincent         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,12 +26,12 @@ HEADER = libft.h
 
 all: $(NAME)
 
-$(NAME): $(CREATE) 
-	@ar rc $(NAME) $(OBJ)
+$(NAME): $(OBJ) 
+	@ar rcs $(NAME) $(OBJ)
 	@ranlib $(NAME)
 
-$(CREATE):
-	@gcc -Wall -Werror -Wextra -c $(SRC)
+%.o: %.c
+	@gcc -Wall -Werror -Wextra -c $< -o $@
 
 clean:
 	@rm -f $(OBJ)
