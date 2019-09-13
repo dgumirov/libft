@@ -6,7 +6,7 @@
 /*   By: tvincent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/06 20:29:30 by tvincent          #+#    #+#             */
-/*   Updated: 2019/09/13 18:14:55 by tvincent         ###   ########.fr       */
+/*   Updated: 2019/09/13 22:11:54 by tvincent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,41 +23,48 @@ static const char	*ft_space(const char *nptr)
 	return (s);
 }
 
-static int			ft_limit(long long n, const char *s, int sign)
+static	int			ft_neg(const char *str)
 {
-	long long	l_min;
-	long long	l_max;
+	long long	res;
 
-	l_min = ((n * 10) + (*s - '0')) * sign;
-	if (l_min < -9223372036854775807)
-		return (0);
-	l_max = ((n * 10) + (*s - '0')) * sign;
-	if (l_max > 9223372036854775807)
-		return (-1);
-	return (1);
+	res = 0;
+	while (*str && *str >= '0' && *str <= '9')
+	{
+		res = res * 10;
+		if (res < 0 || ((res == ((LONG_MAX / 10) * 10) && *str >= '8')))
+			return (0);
+		res = res + (*str - 48);
+		str++;
+	}
+	return (res * -1);
+}
+
+static	int			ft_pos(const char *str)
+{
+	unsigned long long	res;
+
+	res = 0;
+	while (*str && *str >= '0' && *str <= '9')
+	{
+		if ((res >= ((LONG_MAX / 10) * 10) && *str > '7'))
+			return (-1);
+		res = res * 10 + (*str - 48);
+		str++;
+	}
+	return (res);
 }
 
 int					ft_atoi(const char *nptr)
 {
-	int			res;
-	int			sign;
 	const char	*str;
-	int			limit;
 
-	sign = 1;
-	res = 0;
 	str = ft_space(nptr);
 	if (*str == '-')
-		sign = -1;
-	if (*str == '-' || *str == '+')
-		str++;
-	while (*str && *str >= '0' && *str <= '9')
 	{
-		limit = ft_limit(res, str, sign);
-		if (limit == 0 || limit == -1)
-			return (limit);
-		res = res * 10 + (*str - 48);
 		str++;
+		return (ft_neg(str));
 	}
-	return (res * sign);
+	if (*str == '+')
+		str++;
+	return (ft_pos(str));
 }

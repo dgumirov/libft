@@ -6,7 +6,7 @@
 /*   By: tvincent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 11:05:33 by tvincent          #+#    #+#             */
-/*   Updated: 2019/09/10 21:21:57 by tvincent         ###   ########.fr       */
+/*   Updated: 2019/09/13 22:15:55 by tvincent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
+# define LONG_MAX 9223372036854775807
+# define LONG_MIN -9223372036854775808
 
 typedef struct		s_list
 {
