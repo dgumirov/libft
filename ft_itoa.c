@@ -6,7 +6,7 @@
 /*   By: tvincent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/08 14:57:18 by tvincent          #+#    #+#             */
-/*   Updated: 2019/09/13 17:17:13 by tvincent         ###   ########.fr       */
+/*   Updated: 2019/09/13 18:09:43 by tvincent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 static int		lengths(int n)
 {
 	size_t			len;
-	
+
 	if (n == 0)
-		return (2);
+		return (1);
 	len = 0;
 	if (n < 0)
 		len++;
@@ -37,7 +37,7 @@ char			*ft_itoa(int n)
 	char			*str;
 
 	len = lengths(n);
-	if (!(str = (char *)malloc(sizeof(*str) * len + 1)))
+	if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
 	cur = len;
 	str[cur] = '\0';
@@ -53,17 +53,6 @@ char			*ft_itoa(int n)
 		nb = nb / 10;
 	}
 	if (n == 0)
-		str = "0";
+		str[0] = '0';
 	return (str);
 }
-/*
-#include <stdio.h>
-
-int	main()
-{
-	printf("min = %s\n", ft_itoa(-2147483648));
-	printf("10 = %s\n", ft_itoa(10));
-	printf("max = %s\n", ft_itoa(2147483647));
-	printf("0 = %s\n", ft_itoa(0));
-}
-*/
