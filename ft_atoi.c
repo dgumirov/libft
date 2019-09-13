@@ -6,7 +6,7 @@
 /*   By: tvincent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/06 20:29:30 by tvincent          #+#    #+#             */
-/*   Updated: 2019/09/13 18:12:45 by tvincent         ###   ########.fr       */
+/*   Updated: 2019/09/13 18:14:55 by tvincent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 static const char	*ft_space(const char *nptr)
 {
-	const char	*s;	
+	const char	*s;
 
 	while (*nptr && (*nptr == ' ' || *nptr == '\n' || *nptr == '\t' ||
 			*nptr == '\v' || *nptr == '\f' || *nptr == '\r'))
 		nptr++;
 	s = nptr;
-	return (s);	
+	return (s);
 }
 
-static int		ft_limit(long long n, const char *s, int sign)
+static int			ft_limit(long long n, const char *s, int sign)
 {
 	long long	l_min;
 	long long	l_max;
@@ -37,7 +37,7 @@ static int		ft_limit(long long n, const char *s, int sign)
 	return (1);
 }
 
-int			ft_atoi(const char *nptr)
+int					ft_atoi(const char *nptr)
 {
 	int			res;
 	int			sign;
@@ -61,16 +61,3 @@ int			ft_atoi(const char *nptr)
 	}
 	return (res * sign);
 }
-/*
-#include <stdlib.h>
-#include <stdio.h>
-
-int	main()
-{
-	char	str[12] = {0};
-	str[11] = 0;
-
-	printf("atoi = %d\n", atoi("12345678900"));
-	printf("Ft_atoi = %d\n", ft_atoi("12345678900"));
-}
-*/
