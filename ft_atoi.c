@@ -6,13 +6,13 @@
 /*   By: tvincent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/06 20:29:30 by tvincent          #+#    #+#             */
-/*   Updated: 2019/09/07 11:41:58 by tvincent         ###   ########.fr       */
+/*   Updated: 2019/09/13 16:14:41 by tvincent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static const char	*ft_space(char *nptr)
+static const char	*ft_space(const char *nptr)
 {
 	const char	*s;	
 
@@ -39,9 +39,10 @@ static int		ft_limit(long long n, const char *s, int sign)
 
 int			ft_atoi(const char *nptr)
 {
-	int		res;
-	int		sign;
+	int			res;
+	int			sign;
 	const char	*str;
+	int			limit;
 
 	sign = 1;
 	res = 0;
@@ -52,8 +53,8 @@ int			ft_atoi(const char *nptr)
 		str++;
 	while (*str && *str >= '0' && *str <= '9')
 	{
-		limit = ft_limit(res, str, sign)
-		if (limit == 0 || linit == -1)
+		limit = ft_limit(res, str, sign);
+		if (limit == 0 || limit == -1)
 			return (limit);
 		res = res * 10 + (*str - 48);
 		str++;

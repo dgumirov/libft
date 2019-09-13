@@ -6,103 +6,64 @@
 /*   By: tvincent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/08 14:57:18 by tvincent          #+#    #+#             */
-/*   Updated: 2019/09/10 21:24:55 by tvincent         ###   ########.fr       */
+/*   Updated: 2019/09/13 17:17:13 by tvincent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void		lengths(int n, size_t *len, int *weight)
+static int		lengths(int n)
 {
-	*len = 1;
-	if (n >= 0)
-	{
-		*len = 0;
-		n = -n;
-	}
-	*weight = 1;
-	while (n / *weight < -9)
-	{
-		*weight *= 10;
-		*len += 1;
-	}
-}
-
-char			*ft_str_rev(char *s, size_t len)
-{
-	char	*str;
-	size_t	i;
-	size_t	j;
+	size_t			len;
 	
-	i = len;
-	j = 0;
-	if (s)
+	if (n == 0)
+		return (2);
+	len = 0;
+	if (n < 0)
+		len++;
+	while (n)
 	{
-		if (!(str = (char *)malloc(sizeof(char) * len  + 1)))
-			return (NULL);
-		while (i < len && s && str)
-		{
-			i--;
-			str[j] = s[i];
-			j++;
-		}
-		str[j] = '\0';
-		return (str);
+		n = n / 10;
+		len++;
 	}
-	else
-		return (0);
+	return (len);
 }
 
 char			*ft_itoa(int n)
 {
-	size_t		len;
-	size_t		cur;
-	char		*str;
+	size_t			len;
+	size_t			cur;
+	unsigned int	nb;
+	char			*str;
 
-	lengths(n, &len, &weight);
 	len = lengths(n);
-	if (!(str = (char *)malloc(sizeof(char) * len + 1)))
+	if (!(str = (char *)malloc(sizeof(*str) * len + 1)))
 		return (NULL);
-	cur = len - 1;
+	cur = len;
 	str[cur] = '\0';
+	str[0] = '-';
 	if (n < 0)
+		nb = n * -1;
+	else
+		nb = n;
+	while (cur && nb)
 	{
 		cur--;
-		str[cur] = '-';
-		n = n * -1;
+		str[cur] = (nb % 10) + 48;
+		nb = nb / 10;
 	}
-	while (cur)
-	{
-		cur--;
-		str[cur] = (n % 10) + 48;
-		n /= 10;
-	}
-	return (ft_str_rev(str, len));
-}
-
-char			*ft_itoa(int n)
-{
-	size_t		len;
-	int			weight;
-	size_t		cur;
-	char		*str;
-
-	lengths(n, &len, &weight);
-	if (!(str = (char *)malloc(sizeof(char) * len + 1)))
-		return (NULL);
-	cur = 0;
-	if (n < 0)
-	{
-		str[cur] = '-';
-		cur++;
-	}
-	if (n > 0)
-		n = -n;
-	while (weight >= 1)
-	{
-		str[cur++] = -(n / weight % 10) + 48;
-		weight /= 10;
-	}
-	str[cur] = '\0';
+	if (n == 0)
+		str = "0";
 	return (str);
 }
+/*
+#include <stdio.h>
+
+int	main()
+{
+	printf("min = %s\n", ft_itoa(-2147483648));
+	printf("10 = %s\n", ft_itoa(10));
+	printf("max = %s\n", ft_itoa(2147483647));
+	printf("0 = %s\n", ft_itoa(0));
+}
+*/
